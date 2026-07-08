@@ -1,6 +1,6 @@
 # 推特文案 — 分享 S1→S4 方法与 prompt
 
-配套 prompt 全文见 `PROMPTS_S1_S4.md`(可发成 gist / 长文,推特正文放链接)。
+配套 skill 和 prompt 全文见: https://github.com/billypku/fable-method-share
 
 ---
 
@@ -14,8 +14,8 @@
 
 (执行这步我自己还做成了能通宵无人值守的 driver,碰危险操作就急停;但那部分跟我的实盘交易绑太死、不通用,就不分享了,只分享前面这套设计方法。)
 
-四段的 prompt 我整理成能直接抄的模板了 👇
-<贴 PROMPTS_S1_S4 链接>
+四段的 prompt 和 Codex skill 我都整理好了 👇
+https://github.com/billypku/fable-method-share
 
 ---
 
@@ -29,8 +29,8 @@ I split a big task into four stages. The design stages run entirely on Fable —
 
 (I've also turned the execution stage into a driver that runs unattended overnight and hard-stops on anything dangerous — but that part is wired too tightly to my live trading setup to be general, so I'm only sharing the design method above, not that code.)
 
-Copy-paste prompts for all four stages 👇
-<link>
+Copy-paste prompts and the Codex skill are here 👇
+https://github.com/billypku/fable-method-share
 
 ---
 
@@ -71,8 +71,8 @@ S4:GPT-5.5 照清单一项项跑。守三条——一轮一项;测试你自己�
 
 10/
 说白了:方向和设计人 + 最强模型定死,后面的力气活交给便宜量大的模型。
-四段能直接抄的 prompt 全文在这 👇
-<贴链接>
+四段 prompt 和 Codex skill 在这 👇
+https://github.com/billypku/fable-method-share
 
 ---
 
