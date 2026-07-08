@@ -1,0 +1,4 @@
+interface:
+  display_name: "Fable Architecture Flow"
+  short_description: "Design-first workflow for expensive coding models"
+  default_prompt: "Use $fable-architecture-flow to turn this task into S1A/S1B architecture, review, and an executable checklist."
