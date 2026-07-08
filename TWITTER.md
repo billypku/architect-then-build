@@ -1,6 +1,6 @@
-# 推特文案 — 分享 S1→S4 方法与 prompt
+# 推特文案 — 分享 Architect Then Build 方法与 prompt
 
-配套 skill 和 prompt 全文见: https://github.com/billypku/fable-method-share
+配套 skill 和 prompt 全文见: https://github.com/billypku/architect-then-build
 
 ---
 
@@ -10,12 +10,12 @@
 
 一句话:别让最贵的模型写代码,让它只写架构。
 
-我把一个大任务拆成四段。前面的架构设计全程用 Fable,只出文档,我一条条审;定稿之后交给 GPT-5.5 照着一项项执行,每步跑测试卡着。Fable 几千 token 的架构,能管住后面一整晚的执行。它最强的判断力全用在最值钱的地方,代码那种又多又便宜的活,交给便宜量大的模型。
+我把一个大任务拆成几个闸。前面的架构设计全程用 Fable,只出文档,我一条条审;定稿之后交给 GPT-5.5 照着一项项执行,每步跑测试卡着。Fable 几千 token 的架构,能管住后面一整晚的执行。它最强的判断力全用在最值钱的地方,代码那种又多又便宜的活,交给便宜量大的模型。
 
 (执行这步我自己还做成了能通宵无人值守的 driver,碰危险操作就急停;但那部分跟我的实盘交易绑太死、不通用,就不分享了,只分享前面这套设计方法。)
 
-四段的 prompt 和 Codex skill 我都整理好了 👇
-https://github.com/billypku/fable-method-share
+prompt 和 Codex skill 我都整理好了 👇
+https://github.com/billypku/architect-then-build
 
 ---
 
@@ -25,12 +25,12 @@ A workflow I use every day, for when your best model is too expensive to let loo
 
 One line: don't let your priciest model write code. Let it only write the architecture.
 
-I split a big task into four stages. The design stages run entirely on Fable — documents only, which I review line by line. Once the design is locked, GPT-5.5 executes it item by item with tests gating every step. A few thousand tokens of Fable-grade architecture steer a whole night of cheap execution, so the expensive model spends its judgment only where it actually pays off.
+I split a big task into gates. The design gates run entirely on Fable — documents only, which I review line by line. Once the design is locked, GPT-5.5 executes it item by item with tests gating every step. A few thousand tokens of Fable-grade architecture steer a whole night of cheap execution, so the expensive model spends its judgment only where it actually pays off.
 
 (I've also turned the execution stage into a driver that runs unattended overnight and hard-stops on anything dangerous — but that part is wired too tightly to my live trading setup to be general, so I'm only sharing the design method above, not that code.)
 
 Copy-paste prompts and the Codex skill are here 👇
-https://github.com/billypku/fable-method-share
+https://github.com/billypku/architect-then-build
 
 ---
 
@@ -45,10 +45,12 @@ https://github.com/billypku/fable-method-share
 而设计恰恰最吃判断力、最省 token——一份想清楚的架构也就几千 token,却能管住一整晚的执行。所以最贵的模型只押在这一步。
 
 3/
-我把一个大任务拆四段:
-S1 设计(Fable 做,只出文档,我审)
-→ S2/S3 把定稿架构机械转成清单
-→ S4 让 GPT-5.5 照清单执行
+我把一个大任务拆成几个闸:
+S1A 定方向
+→ S1B 写到签名级
+→ S1B 复审
+→ S2 生成 build packet
+→ S3 照清单单项执行
 两条铁律:设计没定稿不进执行;转清单不许新增设计。
 
 4/
@@ -61,18 +63,18 @@ S1B:再让 Fable 把方案细化到"别人照着能搭出同一套"——接口�
 S1B 复审:最好新开一个会话,让 Fable 当"对抗审查者",假设要证明这份架构不能交给 AI 照着写,逐条挑漏,把洞补进正文。这一关过了、我审了,设计才算定死。
 
 7/
-S2/S3:把定稿架构喂给便宜的 GPT-5.5,机械转成一份带验证命令的任务清单 + 一份执行契约。只转写,不做新设计;哪里不够细,回去补架构,不在清单里现编。
+S2:把定稿架构喂给便宜的 GPT-5.5,机械转成 build packet:带验证命令的任务清单 + 执行契约 + blocker 列表。只转写,不做新设计;哪里不够细,回去补架构,不在清单里现编。
 
 8/
-S4:GPT-5.5 照清单一项项跑。守三条——一轮一项;测试你自己跑,别信它嘴上说"通过";每轮 git 提交一次,早上 git log 就是一整夜的账,哪轮歪了直接 revert。
+S3:GPT-5.5 照清单一项项跑。守三条——一轮一项;测试你自己跑,别信它嘴上说"通过";每轮 git 提交一次,早上 git log 就是一整夜的账,哪轮歪了直接 revert。
 
 9/
-补一句:我自己把 S4 做成了全自动 driver,无人值守跑通宵,碰危险操作(改密钥、重启线上服务、跑 live)直接急停。这块不 share——它围着我自己的实盘系统长的,大半是"在真钱旁边跑"的安全机制,不通用。方法你知道大概就行,照那三条自己搭个薄循环就够。
+补一句:我自己有全自动 driver,内部版里 S2 compile、S3 arm/preflight、S4 run。但这块不 share——它围着我自己的实盘系统长的,大半是"在真钱旁边跑"的安全机制,不通用。公开版知道 S2 产包、S3 单项执行就够。
 
 10/
 说白了:方向和设计人 + 最强模型定死,后面的力气活交给便宜量大的模型。
-四段 prompt 和 Codex skill 在这 👇
-https://github.com/billypku/fable-method-share
+prompt 和 Codex skill 在这 👇
+https://github.com/billypku/architect-then-build
 
 ---
 

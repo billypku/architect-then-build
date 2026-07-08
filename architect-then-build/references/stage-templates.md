@@ -71,7 +71,7 @@ Output:
    - Remaining user decisions.
    - Conclusion: `can finalize` or `return to S1B`.
 
-## S2/S3: Tracker and Execution Contract
+## S2: Build Packet
 
 Purpose: mechanically turn finalized S1B into an execution tracker and reusable one-item contract.
 
@@ -109,9 +109,9 @@ Output status, changes, verification result, and next task.
    - List every S1B cut that cannot become a tracker item without new design.
    - Do not invent missing verify commands or scope.
 
-Gate: `ready for S4` only when every unchecked task has a concrete verify command.
+Gate: `ready for S3` only when every unchecked task has a concrete verify command.
 
-## S4: One-Item Execution
+## S3: One-Item Build
 
 Purpose: execute exactly one tracker item.
 

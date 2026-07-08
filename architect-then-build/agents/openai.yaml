@@ -1,0 +1,4 @@
+interface:
+  display_name: "Architect Then Build"
+  short_description: "Turn rough tasks into reviewed build packets"
+  default_prompt: "Use $architect-then-build to turn this task into reviewed architecture and a one-item build tracker."
