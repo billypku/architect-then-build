@@ -1,9 +1,13 @@
 ---
 name: architect-then-build
-description: Turn rough software tasks into reviewed architecture and a mechanical build packet before implementation. Use when a user asks to plan with the Fable method, use an expensive model only for design, run S1A, S1B, review, S2, or S3, create a signature-level architecture, produce a tracker plus execution contract, or execute exactly one tracker item.
+description: "Apply the standalone Fable design-first workflow only when the user explicitly names $architect-then-build or the Fable method. Produces reviewed architecture and a one-item mechanical build packet; all other staged local execution is owned by Code Harness."
 ---
 
 # Architect Then Build
+
+## Activation Scope
+
+Use this skill only for an explicit `$architect-then-build` or Fable-method request. Generic staged-design terms and current-window parallel execution belong to the shared `code-harness` skill; do not load both unless the user explicitly asks to compare the two methods.
 
 ## Core Idea
 
